@@ -1,4 +1,4 @@
-import {TbMessageLanguage} from "react-icons/tb"
+import { TbMessageLanguage } from "react-icons/tb"
 import { FaStar } from "react-icons/fa";
 function Languages({ languages }) {
     return (
@@ -8,18 +8,24 @@ function Languages({ languages }) {
                 <h1>Language</h1>
             </div>
             <div className="language-body text-sm p-2">
-                    {
-                        languages.map((lang) => {
-                            return (
-                                <div>
-                                    <p>{lang.language}</p>
-                                    <div className="fluency">
-                                        <FaStar />
-                                    </div>
+                {
+                    languages.map((lang) => {
+                        return (
+                            <div className="flex justify-between">
+                                <p>{lang.language}</p>
+                                <div className="fluency flex gap-x-1">
+                                    {
+                                        [1, 2, 3, 4, 5].map((star) => {
+                                            return (
+                                                    <FaStar className={star <= lang.fluency ? 'text-blue-700' : 'text-gray-400'} />
+                                            )
+                                        })
+                                    }
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );

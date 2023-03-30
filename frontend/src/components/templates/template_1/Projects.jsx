@@ -1,4 +1,5 @@
 import {AiOutlineProject} from 'react-icons/ai';
+import {TbWorldWww} from 'react-icons/tb';
 function Projects({ projects }) {
     return (
         <div className="projects mb-2">
@@ -10,7 +11,7 @@ function Projects({ projects }) {
                 {
                     projects.map((project) => {
                         return (
-                            <div>
+                            <div className='border-b-2 border-blue-200 px-2'>
                                 <div className="project-header flex items-center justify-between">
                                     <div className="project-title">
                                         <h3 className="text-xl font-bold">{project.name}</h3>
@@ -35,7 +36,8 @@ function Projects({ projects }) {
                                             }
                                         </ul>
                                     </div>
-                                    <div className="project-link py-1">
+                                    <div className="project-link py-1 flex items-center gap-x-1">
+                                        <TbWorldWww className='text-blue-700 text-lg' />
                                         <a href={project.link} className='text-blue-700'>{project.link}</a>
                                     </div>
                                 </div>

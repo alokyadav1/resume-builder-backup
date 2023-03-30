@@ -10,7 +10,7 @@ import Projects from './Projects';
 
 const Template = React.forwardRef(({ resumeInfo }, ref) => {
     return (
-        <div className="h-screen bg-slate-100 w-full mx-auto" ref={ref}>
+        <div className="h-fit bg-slate-100 w-full mx-auto" ref={ref}>
             <div className="resume-header">
                 <Contact contact={resumeInfo[0].contact} />
             </div>
