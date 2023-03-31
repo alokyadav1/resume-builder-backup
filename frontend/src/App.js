@@ -11,7 +11,7 @@ function App({ resumeInfo }) {
   })
   return (
     <div className=' bg-slate-300'>
-      <div className='form h-screen'>
+      <div className='form'>
         <div>
           <Form />
         </div>
