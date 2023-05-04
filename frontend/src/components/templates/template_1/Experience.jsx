@@ -22,7 +22,7 @@ function Experience({ experience }) {
                                     </div>
                                 </div>
                                 <div className="work-body text-sm text-gray-700 pl-5">
-                                    <ul>
+                                    {/* <ul>
                                         {
                                             work.responsibilities.map((responsibility) => {
                                                 return (
@@ -33,7 +33,8 @@ function Experience({ experience }) {
                                                 )
                                             })
                                         }
-                                    </ul>
+                                    </ul> */}
+                                    <p>{work.responsibilities}</p>
                                 </div>
                             </div>
                         )

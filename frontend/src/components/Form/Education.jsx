@@ -1,22 +1,32 @@
-import React, { useState } from "react"
-import {RxCross2} from "react-icons/rx"
+import React, { useState, useContext, useEffect } from "react"
+import { RxCross2 } from "react-icons/rx"
+import UserContext from "../../context/userData"
 function Education() {
+    const { educationR, dispatchEducation } = useContext(UserContext);
     const [ind, setInd] = useState(null)
     const [btnText, setBtnText] = useState("Add")
-    const [formData,setFormData] = useState({})
-    const [education, setEducation] = useState([])
+    const [formData, setFormData] = useState({})
+    const [education, setEducation] = useState(educationR)
+
+    useEffect(() => {
+        dispatchEducation({
+            type: "SET_EDUCATION",
+            payload: education
+        })
+    }, [education])
+    
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setFormData({...formData, [name]:value})
+        setFormData({ ...formData, [name]: value })
     }
 
     const handleAddEducation = (e) => {
         e.preventDefault();
-        if(e.target.value === "Add"){
-            setEducation([...education,formData])
+        if (btnText === "Add") {
+            setEducation([...education, formData])
         }
-        if(e.target.value === "Save Changes"){
+        if (btnText === "Save Changes") {
             let arr = education;
             arr[ind] = formData;
             setEducation([...arr])
@@ -28,7 +38,7 @@ function Education() {
 
     const handleRemoveEducation = (index) => {
         const arr = education;
-        arr.splice(index,1)
+        arr.splice(index, 1)
         setEducation([...arr])
         setFormData({})
         setBtnText("Add")
@@ -47,58 +57,60 @@ function Education() {
             </div>
             <hr />
             <div className="body p-3">
-            <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2">
                     {
-                        education.map((edu,index) => {
+                        education.map((edu, index) => {
                             return (
                                 <div className="bg-blue-700 text-white p-1 px-2 rounded-full shadow-inner flex gap-x-2 items-center">
-                                    <p 
-                                    onClick={() => handleEdit(index)} 
-                                    className=" cursor-pointer">{edu.courseName}</p>
+                                    <p
+                                        onClick={() => handleEdit(index)}
+                                        className=" cursor-pointer">{edu.course_name}</p>
                                     <RxCross2 className="cursor-pointer" onClick={() => handleRemoveEducation(index)} />
                                 </div>
                             )
                         })
                     }
                 </div>
-                <form>
+                <form onSubmit={handleAddEducation}>
                     <div className="p-1 pt-5 flex items-center gap-x-3">
                         <div className="w-1/3">
-                            <label htmlFor="courseName">Course Name: </label>
+                            <label htmlFor="course_name">Course Name: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
                                 type="text"
-                                name="courseName"
-                                value={formData.courseName?formData.courseName:""}
+                                name="course_name"
+                                value={formData.course_name ? formData.course_name : ""}
                                 placeholder="Enter Name of Course"
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
                     <div className="p-1 pt-5 flex items-center gap-x-3">
                         <div className="w-1/3">
-                            <label htmlFor="institute">College/Institute: </label>
+                            <label htmlFor="school_name">College/Institute: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
                                 type="text"
-                                name="institute"
+                                name="school_name"
                                 onChange={handleChange}
-                                value={formData.institute?formData.institute:""}
+                                value={formData.school_name ? formData.school_name : ""}
                                 placeholder="Enter Name of College or Institute"
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
                     <div className="p-1 pt-5 flex items-center gap-x-3">
                         <div className="w-1/3">
-                            <label htmlFor="score">Score: </label>
+                            <label htmlFor="percentage">Score: </label>
                         </div>
                         <div className="w-2/3">
                             <input
                                 type="text"
-                                name="score"
-                                value={formData.score?formData.score:""}
+                                name="percentage"
+                                value={formData.percentage ? formData.percentage : ""}
                                 placeholder="98% or 9.5 CGPA"
                                 onChange={handleChange}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
@@ -106,30 +118,35 @@ function Education() {
                     </div>
                     <div className="flex pt-5 items-center justify-evenly">
                         <div className="p-1 flex flex-col relative">
-                            <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from</label>
+                            <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
                                 type="date"
                                 name="startDate"
-                                value={formData.startDate?formData.startDate:""}
+                                value={formData.startDate ? formData.startDate : ""}
                                 onChange={handleChange}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
+                                required={true}
+                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50"
+                            />
                         </div>
                         <span className="bg-blue-700 text-white rounded-full shadow-lg w-4 h-4 flex justify-center items-center text-lg font-bolder">-</span>
                         <div className="p-1 flex flex-col relative">
-                            <label htmlFor="endDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">to</label>
+                            <label htmlFor="endDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">to <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
                                 type="date"
                                 name="endDate"
-                                value={formData.endDate?formData.endDate:""}
+                                value={formData.endDate ? formData.endDate : ""}
                                 onChange={handleChange}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
+                                required={true}
+                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50"
+                            />
                         </div>
                     </div>
                     <div className="mt-5 flex justify-center">
                         <button
-                        value={btnText}
-                        className="bg-blue-700 text-white p-2 px-5 rounded-lg shadow-sm" 
-                        onClick={handleAddEducation}>{btnText}</button>
+                            type="submit"
+                            value={btnText}
+                            className="bg-blue-700 text-white p-2 px-5 rounded-lg shadow-sm"
+                        >{btnText}</button>
                     </div>
                 </form>
             </div>

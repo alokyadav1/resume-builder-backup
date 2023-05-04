@@ -1,11 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { RxCross2 } from "react-icons/rx"
+import UserContext from "../../context/userData"
 function Project() {
+    const { projectR, dispatchProject } = useContext(UserContext);
     const [ind, setInd] = useState(null)
     const [btnText, setBtnText] = useState("Add")
     const [formData, setFormData] = useState({})
-    const [project, setProject] = useState([])
+    const [project, setProject] = useState(projectR)
 
+    useEffect(() => {
+        dispatchProject({
+            type: "SET_PROJECT",
+            payload: project
+        })
+    }, [project])
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -14,10 +22,10 @@ function Project() {
 
     const handleAddProject = (e) => {
         e.preventDefault();
-        if (e.target.value === "Add") {
+        if (btnText === "Add") {
             setProject([...project, formData])
         }
-        if (e.target.value === "Save Changes") {
+        if (btnText === "Save Changes") {
             let arr = project;
             arr[ind] = formData;
             setProject([...arr])
@@ -55,25 +63,26 @@ function Project() {
                                 <div className="bg-blue-700 text-white p-1 px-2 rounded-full shadow-inner flex gap-x-2 items-center">
                                     <p
                                         onClick={() => handleEdit(index)}
-                                        className=" cursor-pointer">{proj.projectName}</p>
+                                        className=" cursor-pointer">{proj.name}</p>
                                     <RxCross2 className="cursor-pointer" onClick={() => handleRemoveProject(index)} />
                                 </div>
                             )
                         })
                     }
                 </div>
-                <form>
+                <form onSubmit={handleAddProject}>
                     <div className="p-1 pt-5 flex items-center gap-x-3">
                         <div className="w-1/5">
-                            <label htmlFor="projectName">Project Name: </label>
+                            <label htmlFor="name">Project Name: <sup className="text-red-700 font-bold text-sm">*</sup></label>
                         </div>
                         <div className="w-4/5">
                             <input
                                 type="text"
-                                name="projectName"
-                                value={formData.projectName ? formData.projectName : ""}
+                                name="name"
+                                value={formData.name ? formData.name : ""}
                                 onChange={handleChange}
                                 placeholder="eg. Resume Builder using MERN stack"
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
@@ -95,36 +104,38 @@ function Project() {
                         <textarea
                             rows={3}
                             placeholder="Project Description"
-                            name="projectDesc"
-                            value={formData.projectDesc ? formData.projectDesc : ""}
+                            name="description"
+                            value={formData.description ? formData.description : ""}
                             onChange={handleChange}
                             className="w-full bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                     </div>
                     <div className="flex pt-5 items-center justify-evenly">
                         <div className="p-1 flex flex-col relative">
-                            <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from</label>
+                            <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
                                 type="date"
                                 name="startDate"
                                 value={formData.startDate ? formData.startDate : ""}
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
                         <span className="bg-blue-700 text-white rounded-full shadow-lg w-4 h-4 flex justify-center items-center text-lg font-bolder">-</span>
                         <div className="p-1 flex flex-col relative">
-                            <label htmlFor="endDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">to</label>
+                            <label htmlFor="endDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">to <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
                                 type="date"
                                 name="endDate"
                                 value={formData.endDate ? formData.endDate : ""}
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
                     <div className="mt-5 flex justify-center">
                         <button
+                            type="submit"
                             value={btnText}
-                            onClick={handleAddProject}
                             className="bg-blue-700 text-white p-2 px-5 rounded-lg shadow-sm">{btnText}</button>
                     </div>
                 </form>

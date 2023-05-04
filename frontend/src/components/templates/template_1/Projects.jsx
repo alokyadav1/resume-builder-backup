@@ -1,5 +1,5 @@
-import {AiOutlineProject} from 'react-icons/ai';
-import {TbWorldWww} from 'react-icons/tb';
+import { AiOutlineProject } from 'react-icons/ai';
+import { TbWorldWww } from 'react-icons/tb';
 function Projects({ projects }) {
     return (
         <div className="projects mb-2">
@@ -26,7 +26,7 @@ function Projects({ projects }) {
                                     </div>
                                     <div className="project-tech py-1">
                                         <h4 className=' text-lg font-medium'>Technologies Used</h4>
-                                        <ul className='flex gap-x-2'>
+                                        {/* <ul className='flex gap-x-2'>
                                             {
                                                 project.technologies.map((tech) => {
                                                     return (
@@ -34,12 +34,17 @@ function Projects({ projects }) {
                                                     )
                                                 })
                                             }
-                                        </ul>
+                                        </ul> */}
+                                        <p>{project.technologies}</p>
                                     </div>
-                                    <div className="project-link py-1 flex items-center gap-x-1">
-                                        <TbWorldWww className='text-blue-700 text-lg' />
-                                        <a href={project.link} className='text-blue-700'>{project.link}</a>
-                                    </div>
+                                    {
+                                        project.link && (
+                                            <div className="project-link py-1 flex items-center gap-x-1">
+                                                <TbWorldWww className='text-blue-700 text-lg' />
+                                                <a href={project.link} className='text-blue-700'>{project.link}</a>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </div>
                         )

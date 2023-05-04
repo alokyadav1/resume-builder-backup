@@ -8,7 +8,7 @@ function Languages({ languages }) {
                 <h1>Language</h1>
             </div>
             <div className="language-body text-sm p-2">
-                {
+                {/* {
                     languages.map((lang) => {
                         return (
                             <div className="flex justify-between">
@@ -25,7 +25,7 @@ function Languages({ languages }) {
                             </div>
                         )
                     })
-                }
+                } */}
             </div>
         </div>
     );

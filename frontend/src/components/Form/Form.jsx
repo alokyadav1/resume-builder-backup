@@ -6,7 +6,7 @@ import Projects from "./Project";
 import Skills from "./Skill";
 import Section from "./Section";
 import "./form.css";
-function Form() {
+function Form({handleSave}) {
     const section = ["Contact", "Education", "Experience", "Skills", "Projects"]
     const tabs = [<Contact />, <Education />, <Experience />, <Skills />, <Projects />];
     const [activeTab, setActiveTab] = useState(section[0]);
@@ -30,7 +30,9 @@ function Form() {
                         {CurrentTab}
                     </div>
                     <div className="flex justify-center my-3">
-                        <button className="bg-blue-700 text-white p-2 px-5 rounded-full shadow-lg">Save</button>
+                        <button 
+                        onClick={handleSave}
+                        className="bg-blue-700 text-white p-2 px-5 rounded-full shadow-lg">Resume</button>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,11 @@ const Template = React.forwardRef(({ resumeInfo }, ref) => {
     return (
         <div className="bg-slate-100 w-full mx-auto" ref={ref}>
             <div className="resume-header">
-                <Contact contact={resumeInfo[0].contact} />
+                {
+                    resumeInfo[0].contact && (
+                        <Contact contact={resumeInfo[0].contact} />
+                    )
+                }
             </div>
             <div className="resume-body flex ">
                 <div className="side w-2/6 bg-gray-200 p-2">

@@ -1,22 +1,44 @@
-import React, {useState} from "react"
-import {RxCross2} from "react-icons/rx"
-import {MdOutlineAddCircle} from "react-icons/md"
+import React, { useState, useContext, useEffect } from "react"
+import { RxCross2 } from "react-icons/rx"
+import UserContext from "../../context/userData"
 function Skill() {
-    const [skills, setSkills] = useState([])
+    const { skillR, dispatchSkill } = useContext(UserContext)
+    const [ind, setInd] = useState(null)
+    const [btnText, setBtnText] = useState("Add")
+    const [skills, setSkills] = useState(skillR)
     const [skill, setSkill] = useState("")
+
+    useEffect(() => {
+        dispatchSkill({
+            type: "SET_SKILL",
+            payload: skills
+        })
+    }, [skills])
 
     const handleAddSkill = (e) => {
         e.preventDefault()
-        if(skill){
-            setSkills([...skills,skill])
-            setSkill("")
+        if (btnText === "Add") {
+            setSkills([...skills, skill])
+        } else {
+            let arr = skills;
+            arr[ind] = skill;
+            setSkills([...arr])
+            setBtnText("Add")
+            setInd(null)
         }
+        setSkill("")
+
     }
 
     const handleRemoveSkill = (index) => {
         const arr = skills;
-        arr.splice(index,1)
+        arr.splice(index, 1)
         setSkills([...arr])
+    }
+    const handleEdit = (index) => {
+        setSkill(skills[index])
+        setBtnText("Save Changes")
+        setInd(index)
     }
     return (
         <div className="bg-white rounded-md pb-3 w-96">
@@ -27,26 +49,33 @@ function Skill() {
             <div className="body p-3">
                 <div className="flex flex-wrap gap-2 py-2">
                     {
-                        skills.map((s,index) => {
+                        skills.map((s, index) => {
                             return (
                                 <div className="bg-blue-700 text-white p-1 px-2 rounded-full shadow-inner flex gap-x-2 items-center">
-                                    <p>{s}</p>
+                                    <p
+                                    onClick={() => handleEdit(index)}
+                                    className="cursor-pointer">{s}</p>
                                     <RxCross2 className="cursor-pointer" onClick={() => handleRemoveSkill(index)} />
                                 </div>
                             )
                         })
                     }
                 </div>
-                <form>
+                <form onSubmit={handleAddSkill}>
                     <input
                         type="text"
                         name="skill"
-                        placeholder={"skill " + (skills.length+1)}
+                        placeholder={"skill " + (skills.length + 1) + " *"}
                         value={skill}
+                        required={true}
                         onChange={(e) => setSkill(e.target.value)}
                         className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50 w-full" />
                     <div className="flex justify-center mt-3">
-                        <button className="bg-indigo-700 text-white p-2 px-3 rounded-md shadow-md" onClick={handleAddSkill}><MdOutlineAddCircle /></button>
+                        <button
+                            type="submit"
+                            value={btnText}
+                            className="bg-indigo-700 text-white p-2 px-3 rounded-md shadow-md"
+                        >{btnText}</button>
                     </div>
                 </form>
             </div>

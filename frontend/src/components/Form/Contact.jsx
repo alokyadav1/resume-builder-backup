@@ -1,10 +1,22 @@
-import React, {useState} from "react"
+import React, {useState, useContext,useEffect} from "react"
+import UserContext from "../../context/userData"
 function Contact() {
-    const [contact, setContact] = useState({})
+    const {contactR, dispatchContact} = useContext(UserContext)
+    const [contact, setContact] = useState(contactR)
+
+
     const handleChange = (e) => {
         const name = e.target.name
         const value = e.target.value
         setContact({...contact, [name]:value})
+    }
+
+    const handleSave = (e) => {
+        e.preventDefault();
+        dispatchContact({
+            type:"SET_CONTACT",
+            payload:contact
+        })
     }
     return (
         <div className="bg-white rounded-md pb-3">
@@ -13,22 +25,26 @@ function Contact() {
             </div>
             <hr />
             <div className="body p-3">
-                <form>
+                <form onSubmit={handleSave}>
                     <div className="flex">
                         <div className="p-1">
                             <input
                                 type="text"
                                 name="name"
-                                placeholder="Enter Your Name"
+                                value={contact.name ? contact.name : ""}
+                                placeholder="Enter Your Name *"
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
                         <div className="p-1">
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="Enter Your Email"
+                                value={contact.email ? contact.email : ""}
+                                placeholder="Enter Your Email *"
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
@@ -37,7 +53,8 @@ function Contact() {
                             <input
                                 type="text"
                                 name="profession"
-                                placeholder="Enter Your Profession"
+                                value={contact.profession ? contact.profession : ""}
+                                placeholder="Enter Your Profession *"
                                 onChange={handleChange}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
@@ -45,8 +62,10 @@ function Contact() {
                             <input
                                 type="number"
                                 name="mobile"
+                                value={contact.mobile ? contact.mobile : ""}
                                 placeholder="Enter Mobile"
                                 onChange={handleChange}
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
                         </div>
                     </div>
@@ -58,6 +77,7 @@ function Contact() {
                             <input
                                 type="text"
                                 name="website"
+                                value={contact.website ? contact.website : ""}
                                 placeholder="Website"
                                 onChange={handleChange}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
@@ -71,6 +91,7 @@ function Contact() {
                             <input
                                 type="text"
                                 name="github"
+                                value={contact.github ? contact.github : ""}
                                 placeholder="https://github.com/alokyadav1"
                                 onChange={handleChange}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
@@ -84,10 +105,14 @@ function Contact() {
                             <input
                                 type="text"
                                 name="linkedin"
+                                value={contact.linkedin ? contact.linkedin : ""}
                                 placeholder="https://linkedin.com/alokyadav1"
                                 onChange={handleChange}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
                         </div>
+                    </div>
+                    <div className="flex justify-center">
+                        <button type="submit" className="bg-blue-700 text-white p-2 px-5 rounded-full shadow-lg">Save</button>
                     </div>
                 </form>
             </div>
