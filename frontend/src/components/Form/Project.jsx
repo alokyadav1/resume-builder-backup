@@ -19,7 +19,6 @@ function Project() {
         const value = e.target.value;
         setFormData({ ...formData, [name]: value })
     }
-
     const handleAddProject = (e) => {
         e.preventDefault();
         if (btnText === "Add") {
@@ -97,6 +96,21 @@ function Project() {
                                 value={formData.tech ? formData.tech : ""}
                                 onChange={handleChange}
                                 placeholder="eg. MERN stack, Java, Python"
+                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                        </div>
+                    </div>
+                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                        <div className="w-1/5">
+                            <label htmlFor="name">Project Link: </label>
+                        </div>
+                        <div className="w-4/5">
+                            <input
+                                type="url"
+                                name="link"
+                                value={formData.link ? formData.link : ""}
+                                onChange={handleChange}
+                                placeholder="URL"
+                                required={true}
                                 className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
                         </div>
                     </div>

@@ -21,7 +21,7 @@ function Experience({ experience }) {
                                         <p className="text-sm text-gray-700 mr-2">{work.company}</p>
                                     </div>
                                 </div>
-                                <div className="work-body text-sm text-gray-700 pl-5">
+                                <div className="work-body text-sm text-gray-700 pl-5 flex wrap">
                                     {/* <ul>
                                         {
                                             work.responsibilities.map((responsibility) => {
@@ -34,7 +34,11 @@ function Experience({ experience }) {
                                             })
                                         }
                                     </ul> */}
-                                    <p>{work.responsibilities}</p>
+                                    <div className="flex items-center">
+                                        <TbPointFilled className="text-blue-700" />
+                                        <li className="inline ml-2 w-96 break-words text-ellipsis">{work.responsibilities}</li>
+                                    </div>
+                                    {/* <p className=" w-fit text-justify">{work.responsibilities}</p> */}
                                 </div>
                             </div>
                         )

@@ -5,14 +5,14 @@ function Languages({ languages }) {
         <div className="language mb-2">
             <div className="language-title text-2xl font-bold text-blue-700 flex items-center gap-x-2">
                 <TbMessageLanguage className='text-2xl' />
-                <h1>Language</h1>
+                <h1>Language a</h1>
             </div>
             <div className="language-body text-sm p-2">
-                {/* {
+                {
                     languages.map((lang) => {
                         return (
                             <div className="flex justify-between">
-                                <p>{lang.language}</p>
+                                <p className=" text-black">{lang.name}</p>
                                 <div className="fluency flex gap-x-1">
                                     {
                                         [1, 2, 3, 4, 5].map((star) => {
@@ -25,7 +25,7 @@ function Languages({ languages }) {
                             </div>
                         )
                     })
-                } */}
+                }
             </div>
         </div>
     );

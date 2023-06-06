@@ -7,8 +7,8 @@ import Language from './Language';
 import Experience from './Experience';
 import Projects from './Projects';
 
-
 const Template = React.forwardRef(({ resumeInfo }, ref) => {
+
     return (
         <div className="bg-slate-100 w-full mx-auto" ref={ref}>
             <div className="resume-header">

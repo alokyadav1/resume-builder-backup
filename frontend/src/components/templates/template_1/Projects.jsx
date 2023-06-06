@@ -1,6 +1,7 @@
 import { AiOutlineProject } from 'react-icons/ai';
 import { TbWorldWww } from 'react-icons/tb';
 function Projects({ projects }) {
+    // const technologies = projects.tech.split(",");
     return (
         <div className="projects mb-2">
             <div className="projects-header text-2xl font-bold text-blue-700 w-fit flex items-center gap-x-2">
@@ -28,14 +29,14 @@ function Projects({ projects }) {
                                         <h4 className=' text-lg font-medium'>Technologies Used</h4>
                                         {/* <ul className='flex gap-x-2'>
                                             {
-                                                project.technologies.map((tech) => {
+                                                technologies.map((t) => {
                                                     return (
-                                                        <li className=' bg-slate-300 text-black p-1 px-3 rounded-full shadow-inner'>{tech}</li>
+                                                        <li className=' bg-slate-300 text-black p-1 px-3 rounded-full shadow-inner'>{t}</li>
                                                     )
                                                 })
                                             }
                                         </ul> */}
-                                        <p>{project.technologies}</p>
+                                        <p>{project.tech}</p>
                                     </div>
                                     {
                                         project.link && (

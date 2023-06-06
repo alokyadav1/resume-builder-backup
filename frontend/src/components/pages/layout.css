@@ -1,0 +1,9 @@
+.active{
+    color: black;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 1rem;
+}
+nav{
+    height: 15vh;
+}

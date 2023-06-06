@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+.home{
+    font-family: 'Poppins', sans-serif;
+    background-image: url("../../assets/images/wave.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 85vh;
+}
+.home div{
+    width: 80%;
+    margin: 0 auto;
+}
+.home h2{
+    font-size: 5rem;
+    opacity: 0.8;
+}
+.resume{
+    color: orangered;
+    display: inline-block;
+}
+.home p{
+    width: 60%;
+    margin-top: 1rem;
+    text-align: center;
+    margin: 0 auto;
+}
