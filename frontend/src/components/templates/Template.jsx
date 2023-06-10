@@ -3,6 +3,8 @@ import UserContext from "../../context/userData";
 import { useReactToPrint } from 'react-to-print';
 import Template1 from "../templates/template_1/Template1";
 import { redirect, useNavigate } from "react-router-dom";
+
+import "../../assets/styles/resume.css"
 function Template() {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
@@ -21,8 +23,8 @@ function Template() {
             }
             {
                 user.length > 0 && (
-                    <div>
-                        <div className='w-2/3 mx-auto bg-neutral-800 p-3 rounded-md shadow-2xl'>
+                    <div className="resume-container">
+                        <div className=' mx-auto bg-neutral-800 p-3 rounded-md shadow-2xl'>
                             <Template1 resumeInfo={user} ref={componentRef} />
                         </div>
                         <div className='flex justify-center w-full'>

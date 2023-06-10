@@ -7,7 +7,7 @@ import Skills from "./Skill";
 import Language from "./Language";
 import Section from "./Section";
 import UserContext from "../../context/userData"
-import "./form.css";
+import "./formTab.css";
 function Form({ handleSave }) {
     const fakeData = {
         summary: "I am a software developer with 3 years of experience in the industry. I have worked on a variety of projects, including web applications, mobile applications, and desktop applications. I am passionate about creating software that is both functional and beautiful. I am a quick learner and a team player. I am looking for a position where I can continue to grow as a developer and as a person.",
@@ -120,13 +120,12 @@ function Form({ handleSave }) {
     const [activeTab, setActiveTab] = useState(section[0]);
     const [CurrentTab, setCurrentTab] = useState(tabs[0]);
 
-    const { contactR, dispatchContact } = useContext(UserContext)
-    const { educationR, dispatchEducation } = useContext(UserContext);
-    const { experienceR, dispatchExperience } = useContext(UserContext);
-    const { skillsR, dispatchSkill } = useContext(UserContext);
-    const { languageR, dispatchLanguage } = useContext(UserContext);
-    const { projectR, dispatchProject } = useContext(UserContext);
-
+    const { dispatchContact } = useContext(UserContext);
+    const { dispatchEducation } = useContext(UserContext);
+    const { dispatchExperience } = useContext(UserContext);
+    const { dispatchSkill } = useContext(UserContext);
+    const { dispatchLanguage } = useContext(UserContext);
+    const { dispatchProject } = useContext(UserContext);
 
 
     const handleTabChange = (index) => {
@@ -160,18 +159,20 @@ function Form({ handleSave }) {
         })
     }
     return (
-        <div>
-            <div>
-                <Section
-                    section={section}
-                    activeTab={activeTab}
-                    handleTabChange={handleTabChange}
-                    handleFakeData={handleFakeData} />
+        <div className="form flex justify-between items-center">
+            <div className="w-1/5 form-tab ml-3 rounded-xl md:shadow-xl">
+                <div>
+                    <Section
+                        section={section}
+                        activeTab={activeTab}
+                        handleTabChange={handleTabChange}
+                        handleFakeData={handleFakeData} />
+                </div>
             </div>
 
-            <div className="flex justify-center pt-5 h-screen">
-                <div>
-                    <div>
+            <div className="flex justify-center flex-wrap pt-5 w-4/5 form-section">
+                <div className="flex flex-col items-center flex-wrap">
+                    <div className="px-8">
                         {CurrentTab}
                     </div>
                     <div className="flex justify-center my-3">

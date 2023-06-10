@@ -41,7 +41,7 @@ function Skill() {
         setInd(index)
     }
     return (
-        <div className="bg-white rounded-md pb-3 w-96">
+        <div className="bg-white rounded-md pb-3 sm:w-96 shadow-xl">
             <div className="title p-3 text-center">
                 <h1 className="text-4xl font-bold">Skills</h1>
             </div>
@@ -69,7 +69,7 @@ function Skill() {
                         value={skill}
                         required={true}
                         onChange={(e) => setSkill(e.target.value)}
-                        className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50 w-full" />
+                        className="rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4 w-full" />
                     <div className="flex justify-center mt-3">
                         <button
                             type="submit"

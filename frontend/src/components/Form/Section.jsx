@@ -1,8 +1,10 @@
 import React from 'react';
+import {IoMdPersonAdd} from 'react-icons/io';
+import './formTab.css';
 function Section({ section, handleTabChange, activeTab, handleFakeData}) {
     return (
-        <div className='flex justify-around bg-white'>
-            <div className="flex gap-x-7 justify-center  p-2 w-3/4">
+        <div className='section relative h-fit p-2'>
+            <div className="flex flex-col gap-y-3 justify-center">
                 {
                     section.map((item, index) => {
                         return (
@@ -13,10 +15,11 @@ function Section({ section, handleTabChange, activeTab, handleFakeData}) {
                     })
                 }
             </div>
-            <div className="dummyData flex justify-end items-center pr-6  w-1/4">
+            <hr className=' border-1 border-slate-300 m-5' />
+            <div className="dummyData flex justify-center">
                 <button 
-                className='bg-blue-700 text-white rounded shadow-lg p-2'
-                onClick={handleFakeData}>Fake Info</button>
+                className='flex items-center justify-center gap-2 bg-blue-700 text-white rounded shadow-lg p-2 cursor-pointer'
+                onClick={handleFakeData}><IoMdPersonAdd /> Sample Data</button>
             </div>
         </div>
     );

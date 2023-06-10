@@ -51,7 +51,7 @@ function Education() {
         setInd(index)
     }
     return (
-        <div className="bg-white rounded-md pb-3 max-w-md">
+        <div className="bg-white rounded-md pb-3 shadow-xl">
             <div className="title p-3 text-center">
                 <h1 className="text-4xl font-bold">Education</h1>
             </div>
@@ -71,10 +71,10 @@ function Education() {
                         })
                     }
                 </div>
-                <form onSubmit={handleAddEducation}>
-                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                <form onSubmit={handleAddEducation} className="form-cont">
+                    <div className="p-1 pt-5 flex items-center gap-x-3 flex-wrap">
                         <div className="w-1/3">
-                            <label htmlFor="course_name">Course Name: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
+                            <label htmlFor="course_name"  className="text-sm font-medium leading-6 text-gray-900">Course Name: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
@@ -84,12 +84,12 @@ function Education() {
                                 placeholder="Enter Name of Course"
                                 onChange={handleChange}
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
-                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                    <div className="p-1 pt-5 flex items-center gap-x-3 flex-wrap">
                         <div className="w-1/3">
-                            <label htmlFor="school_name">College/Institute: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
+                            <label htmlFor="school_name"  className="text-sm font-medium leading-6 text-gray-900">College/Institute: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
@@ -99,12 +99,12 @@ function Education() {
                                 value={formData.school_name ? formData.school_name : ""}
                                 placeholder="Enter Name of College or Institute"
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
-                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                    <div className="p-1 pt-5 flex items-center gap-x-3 flex-wrap">
                         <div className="w-1/3">
-                            <label htmlFor="percentage">Score: </label>
+                            <label htmlFor="percentage"  className="text-sm font-medium leading-6 text-gray-900">Score: </label>
                         </div>
                         <div className="w-2/3">
                             <input
@@ -113,10 +113,10 @@ function Education() {
                                 value={formData.percentage ? formData.percentage : ""}
                                 placeholder="98% or 9.5 CGPA"
                                 onChange={handleChange}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
-                    <div className="flex pt-5 items-center justify-evenly">
+                    <div className="flex pt-5 items-center justify-evenly flex-wrap">
                         <div className="p-1 flex flex-col relative">
                             <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
@@ -125,7 +125,7 @@ function Education() {
                                 value={formData.startDate ? formData.startDate : ""}
                                 onChange={handleChange}
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50"
+                                className="rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4"
                             />
                         </div>
                         <span className="bg-blue-700 text-white rounded-full shadow-lg w-4 h-4 flex justify-center items-center text-lg font-bolder">-</span>
@@ -137,7 +137,7 @@ function Education() {
                                 value={formData.endDate ? formData.endDate : ""}
                                 onChange={handleChange}
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50"
+                                className="rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4"
                             />
                         </div>
                     </div>

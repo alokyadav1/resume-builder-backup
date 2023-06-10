@@ -1,0 +1,25 @@
+.container {
+    background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100");
+}
+
+.container-body {
+    background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.list ul {
+    list-style-type: none;
+}
+
+.list ul li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.list ul li:hover {
+    cursor: pointer;
+}

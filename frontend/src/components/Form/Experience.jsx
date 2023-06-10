@@ -51,7 +51,7 @@ function Experience() {
         setInd(index)
     }
     return (
-        <div className="bg-white rounded-md max-w-md ">
+        <div className="bg-white rounded-md max-w-md shadow-xl ">
             <div className="title p-3 text-center">
                 <h1 className="text-4xl font-bold">Experience</h1>
             </div>
@@ -71,10 +71,10 @@ function Experience() {
                         })
                     }
                 </div>
-                <form onSubmit={handleAddExperience}>
-                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                <form onSubmit={handleAddExperience} className="form-cont">
+                    <div className="p-1 pt-5 flex items-center gap-x-3 flex-wrap">
                         <div className="w-1/3">
-                            <label htmlFor="company">Company Name: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
+                            <label htmlFor="company"  className="text-sm font-medium leading-6 text-gray-900">Company Name: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
@@ -84,12 +84,12 @@ function Experience() {
                                 onChange={handleChange}
                                 placeholder="eg. Google"
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
-                    <div className="p-1 pt-5 flex items-center gap-x-3">
+                    <div className="p-1 pt-5 flex items-center gap-x-3 flex-wrap">
                         <div className="w-1/3">
-                            <label htmlFor="position">Position: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
+                            <label htmlFor="position"  className="text-sm font-medium leading-6 text-gray-900">Position: <sup className="text-red-700 font-bold text-sm">*</sup> </label>
                         </div>
                         <div className="w-2/3">
                             <input
@@ -99,7 +99,7 @@ function Experience() {
                                 onChange={handleChange}
                                 placeholder="eg. web developer"
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md w-full border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
                     <div className="p-1 pt-5 flex items-center gap-x-3">
@@ -109,9 +109,9 @@ function Experience() {
                             name="responsibilities"
                             value={formData.responsibilities ? formData.responsibilities : ""}
                             onChange={handleChange}
-                            className="w-full bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
+                            className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                     </div>
-                    <div className="flex pt-5 items-center justify-evenly">
+                    <div className="flex pt-5 items-center justify-evenly flex-wrap">
                         <div className="p-1 flex flex-col relative">
                             <label htmlFor="startDate" className="absolute -top-2 left-4 bg-white text-sm text-blue-600 px-1">from <span className="text-red-700 font-bold text-sm">*</span></label>
                             <input
@@ -120,7 +120,7 @@ function Experience() {
                                 value={formData.startDate ? formData.startDate : ""}
                                 onChange={handleChange}
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
+                                className="w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                         <span className="bg-blue-700 text-white rounded-full shadow-lg w-4 h-4 flex justify-center items-center text-lg font-bolder">-</span>
                         <div className="p-1 flex flex-col relative">
@@ -131,7 +131,7 @@ function Experience() {
                                 value={formData.endDate ? formData.endDate : ""}
                                 onChange={handleChange}
                                 required={true}
-                                className="bg-slate-200 text-black p-2 rounded-md shadow-md border border-slate-700 border-opacity-50" />
+                                className="rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-4" />
                         </div>
                     </div>
                     <div className="flex justify-center my-3">

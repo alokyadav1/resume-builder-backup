@@ -17,10 +17,86 @@
 .resume{
     color: orangered;
     display: inline-block;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 .home p{
     width: 60%;
     margin-top: 1rem;
     text-align: center;
     margin: 0 auto;
+}
+.create-btn div{
+    width: 70%;
+    padding: auto;
+}
+@media screen and (min-width:768px){
+    .home{
+        min-height: 85vh;
+        height: fit-content;
+    }
+}
+@media screen and (max-width: 768px) {
+    .home{
+        min-height: 85vh;
+        height: fit-content;
+    }
+    .home div{
+        width: 90%;
+    }
+    .home-title h2{
+        font-size: 3.5rem;
+        line-height: normal;
+        font-weight: bolder;
+    }
+    .home p{
+        width: 100%;
+    }
+    .create-container{
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        column-gap: 1rem;
+    }
+
+    .create-container div{
+        width: 100%;
+        margin: 0.5rem auto;
+    }
+    .create-btn div:first-child{
+        padding: 1rem;
+        font-size: medium;
+        background-color: blue;
+        border-radius: 100px;
+    }
+    .create-container .create-btn{
+        margin-top: 0.4rem;
+    }
+}
+    
+@media screen and (max-width:450px){
+    .home{
+        padding: 5px;
+        height: fit-content;
+    }
+    .home-title h2{
+        font-size: 2.7rem;
+    }
+    .create-container{
+        height: fit-content;
+        width: 100%;
+        column-gap: 0.5rem;
+    }
+    .create-btn div:first-child{
+        padding: 1rem;
+        font-size: medium;
+        background-color: blue;
+        border-radius: 100px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .home-title h2{
+        font-size: 2.3rem;
+        word-wrap: break-word;
+    }
 }

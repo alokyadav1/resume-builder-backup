@@ -1,0 +1,10 @@
+.resume-container{
+    width: 600px;
+    padding: 10px;
+    overflow: auto;
+}
+@media screen and (max-width: 600px) {
+    .resume-container{
+        width: 100%;
+    }
+}
